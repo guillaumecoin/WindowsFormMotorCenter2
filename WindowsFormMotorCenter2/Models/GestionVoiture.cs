@@ -17,6 +17,13 @@ namespace WindowsFormMotorCenter2.Models
             return model.Voitures.ToList();
         }
 
+        public int CompterVoiture()
+        {
+            return model.Voitures.Count();
+        }
+
+
+
         public Voiture AjouterVoiture(Voiture voiture)
         {
             model.Voitures.Add(voiture);
