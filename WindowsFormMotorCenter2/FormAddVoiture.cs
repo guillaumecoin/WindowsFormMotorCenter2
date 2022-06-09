@@ -144,5 +144,10 @@ namespace WindowsFormMotorCenter2
         {
 
         }
+
+        private void txtPuissanceF_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -31,7 +31,6 @@ namespace WindowsFormMotorCenter2
         {
             this.components = new System.ComponentModel.Container();
             this.lvVoitures = new System.Windows.Forms.ListView();
-            this.AddPageBtn = new System.Windows.Forms.Button();
             this.lvNbVoiture = new System.Windows.Forms.ListView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.modifierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,20 +53,10 @@ namespace WindowsFormMotorCenter2
             this.lvVoitures.View = System.Windows.Forms.View.Details;
             this.lvVoitures.SelectedIndexChanged += new System.EventHandler(this.lvVoitures_SelectedIndexChanged);
             // 
-            // AddPageBtn
-            // 
-            this.AddPageBtn.Location = new System.Drawing.Point(21, 390);
-            this.AddPageBtn.Name = "AddPageBtn";
-            this.AddPageBtn.Size = new System.Drawing.Size(140, 23);
-            this.AddPageBtn.TabIndex = 1;
-            this.AddPageBtn.Text = "Ajouter une voiture";
-            this.AddPageBtn.UseVisualStyleBackColor = true;
-            this.AddPageBtn.Click += new System.EventHandler(this.AddPageBtn_Click);
-            // 
             // lvNbVoiture
             // 
             this.lvNbVoiture.HideSelection = false;
-            this.lvNbVoiture.Location = new System.Drawing.Point(12, 144);
+            this.lvNbVoiture.Location = new System.Drawing.Point(12, 43);
             this.lvNbVoiture.Name = "lvNbVoiture";
             this.lvNbVoiture.Size = new System.Drawing.Size(140, 76);
             this.lvNbVoiture.TabIndex = 2;
@@ -82,27 +71,27 @@ namespace WindowsFormMotorCenter2
             this.ajouterToolStripMenuItem,
             this.supprimerToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(130, 70);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // modifierToolStripMenuItem
             // 
             this.modifierToolStripMenuItem.Name = "modifierToolStripMenuItem";
-            this.modifierToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.modifierToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.modifierToolStripMenuItem.Text = "Modifier";
             this.modifierToolStripMenuItem.Click += new System.EventHandler(this.modifierToolStripMenuItem_Click);
             // 
             // ajouterToolStripMenuItem
             // 
             this.ajouterToolStripMenuItem.Name = "ajouterToolStripMenuItem";
-            this.ajouterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ajouterToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.ajouterToolStripMenuItem.Text = "Ajouter";
             this.ajouterToolStripMenuItem.Click += new System.EventHandler(this.ajouterToolStripMenuItem_Click);
             // 
             // supprimerToolStripMenuItem
             // 
             this.supprimerToolStripMenuItem.Name = "supprimerToolStripMenuItem";
-            this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.supprimerToolStripMenuItem.Text = "Supprimer";
             this.supprimerToolStripMenuItem.Click += new System.EventHandler(this.supprimerToolStripMenuItem_Click);
             // 
@@ -113,7 +102,6 @@ namespace WindowsFormMotorCenter2
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.lvNbVoiture);
-            this.Controls.Add(this.AddPageBtn);
             this.Controls.Add(this.lvVoitures);
             this.Name = "FormMain";
             this.Text = "Gestion des voitures";
@@ -126,7 +114,6 @@ namespace WindowsFormMotorCenter2
         #endregion
 
         private System.Windows.Forms.ListView lvVoitures;
-        private System.Windows.Forms.Button AddPageBtn;
         private System.Windows.Forms.ListView lvNbVoiture;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem modifierToolStripMenuItem;
