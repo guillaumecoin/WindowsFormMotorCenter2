@@ -48,11 +48,11 @@ namespace WindowsFormMotorCenter2
             this.txtPeinture = new System.Windows.Forms.TextBox();
             this.txtNbPorte = new System.Windows.Forms.TextBox();
             this.txtModele = new System.Windows.Forms.TextBox();
-            this.txtPrix = new System.Windows.Forms.TextBox();
             this.txtMarque = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.ConfirmeBtm = new System.Windows.Forms.Button();
             this.AnnulerBtn = new System.Windows.Forms.Button();
+            this.txtPrix = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // labelId
@@ -221,15 +221,6 @@ namespace WindowsFormMotorCenter2
             this.txtModele.Size = new System.Drawing.Size(100, 23);
             this.txtModele.TabIndex = 10;
             // 
-            // txtPrix
-            // 
-            this.txtPrix.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtPrix.Location = new System.Drawing.Point(504, 242);
-            this.txtPrix.Name = "txtPrix";
-            this.txtPrix.Size = new System.Drawing.Size(100, 23);
-            this.txtPrix.TabIndex = 11;
-            this.txtPrix.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
-            // 
             // txtMarque
             // 
             this.txtMarque.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -249,6 +240,7 @@ namespace WindowsFormMotorCenter2
             // 
             // ConfirmeBtm
             // 
+            this.ConfirmeBtm.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.ConfirmeBtm.Location = new System.Drawing.Point(475, 371);
             this.ConfirmeBtm.Name = "ConfirmeBtm";
             this.ConfirmeBtm.Size = new System.Drawing.Size(75, 23);
@@ -267,19 +259,28 @@ namespace WindowsFormMotorCenter2
             this.AnnulerBtn.Text = "Annuler";
             this.AnnulerBtn.UseVisualStyleBackColor = true;
             // 
+            // txtPrix
+            // 
+            this.txtPrix.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtPrix.Location = new System.Drawing.Point(504, 245);
+            this.txtPrix.Name = "txtPrix";
+            this.txtPrix.Size = new System.Drawing.Size(100, 23);
+            this.txtPrix.TabIndex = 11;
+            // 
             // FormAddVoiture
             // 
             this.AcceptButton = this.ConfirmeBtm;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.CancelButton = this.AnnulerBtn;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.txtPrix);
             this.Controls.Add(this.AnnulerBtn);
             this.Controls.Add(this.ConfirmeBtm);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtMarque);
-            this.Controls.Add(this.txtPrix);
             this.Controls.Add(this.txtModele);
             this.Controls.Add(this.txtNbPorte);
             this.Controls.Add(this.txtPeinture);
@@ -329,10 +330,10 @@ namespace WindowsFormMotorCenter2
         private System.Windows.Forms.TextBox txtPeinture;
         private System.Windows.Forms.TextBox txtNbPorte;
         private System.Windows.Forms.TextBox txtModele;
-        private System.Windows.Forms.TextBox txtPrix;
         private System.Windows.Forms.TextBox txtMarque;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button ConfirmeBtm;
         private System.Windows.Forms.Button AnnulerBtn;
+        private System.Windows.Forms.TextBox txtPrix;
     }
 }

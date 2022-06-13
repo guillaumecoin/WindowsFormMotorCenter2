@@ -13,12 +13,13 @@ namespace WindowsFormMotorCenter2
 {
     public partial class FormMain : Form
     {
-        private GestionVoiture gestionVoiture = new GestionVoiture();
+        private GestionVoiture gestionVoiture;
         
 
         public FormMain()
         {
             InitializeComponent();
+            gestionVoiture = new GestionVoiture();
         }
 
        
@@ -37,6 +38,7 @@ namespace WindowsFormMotorCenter2
             lvVoitures.Columns.Add(new ColumnHeader() { Name = "marque", Text = "Marque", Width = 60 });
             lvVoitures.Columns.Add(new ColumnHeader() { Name = "modele", Text = "Modèle", Width = 60 });
             lvVoitures.Columns.Add(new ColumnHeader() { Name = "prixAchat", Text = "Prix", Width = 50 });
+            
 
             lvVoitures.Items.Clear();
 
@@ -46,17 +48,12 @@ namespace WindowsFormMotorCenter2
                 lvVoitures.AddVoiture(voiture);
             }
 
-            lvNbVoiture.Columns.Clear();
-            lvNbVoiture.Columns.Add(new ColumnHeader() { Name = "NbVoitures", Text = "Nombre de voiture ", Width = 60 });
+            
 
-            //int nbVoiture = gestionVoiture.CompterVoiture();
-            //ListViewItem lvNb = new ListViewItem(new string[] { nbVoiture.ToString() });
-          
-            //lvNb.Tag = "nbVoitures" ;
-          
-           // lvNbVoiture.Items.Add(lvNb);
-            //lvNbVoiture.Columns.Clear();
-
+            string nbVoiture = gestionVoiture.CompterVoiture();
+            txtNbVoiture.Text = nbVoiture; 
+            
+            
 
         }
 
@@ -70,32 +67,49 @@ namespace WindowsFormMotorCenter2
 
         private void AddPageBtn_Click(object sender, EventArgs e)
         {
-            FormAddVoiture form = new FormAddVoiture();
+            FormAddVoiture form = new FormAddVoiture(gestionVoiture);
 
             if (form.ShowDialog() == DialogResult.OK)
             {
+                lvVoitures.Items.Clear();
 
+                List<Voiture> liste = gestionVoiture.ChargerVoiture();
+                foreach (Voiture voiture in liste)
+                {
+                    lvVoitures.AddVoiture(voiture);
+                }
             }
 
         }
 
         private void lvVoitures_DoubleClick(object sender, EventArgs e)
         {
-            modifierToolStripMenuItem_Click(sender, e);
 
-           // ListView.SelectedListViewItemCollection selected = lvVoitures.SelectedItems;
+            FormAddVoiture form = new FormAddVoiture(gestionVoiture);
 
-           // if (selected.Count == 1)
-          //  {
-            //    ModifierVoiture(selected[0].Tag as Voiture);
-          //  }
-
-            FormAddVoiture form = new FormAddVoiture();
 
             if (form.ShowDialog() == DialogResult.OK)
             {
 
+
+
             }
+
+            ListView.SelectedListViewItemCollection selected = lvVoitures.SelectedItems;
+
+            if (selected.Count == 1)
+            {
+                ModifierVoiture(selected[0].Tag as Voiture);
+            }
+
+            modifierToolStripMenuItem_Click(sender, e);
+
+            
+            
+
+          
+
+
 
 
 
@@ -104,19 +118,26 @@ namespace WindowsFormMotorCenter2
         }
         private void ModifierVoiture(Voiture voiture)
         {
-            FormAddVoiture form = new FormAddVoiture(voiture);
+            FormAddVoiture form = new FormAddVoiture(voiture, gestionVoiture);
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                if (lvVoitures.UpdateVoiture(voiture) != null)
+                lvVoitures.Items.Clear();
+                foreach (var test in gestionVoiture.ChargerVoiture())
+                    lvVoitures.AddVoiture(test);
+              /*  if (lvVoitures.UpdateVoiture(voiture) != null)
                 {
+                    lvVoitures.Items.Clear();
+                    List<Voiture> liste = gestionVoiture.ChargerVoiture();
+                    foreach (Voiture v in liste)
+                    {
+                        lvVoitures.AddVoiture(v);
+                    }
+
                     return;
                 }
-                MessageBox.Show("La voiture n'a pas pu être modifiée", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("La voiture n'a pas pu être modifiée", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);*/
             }
-
-  
-
         }
 
         private void modifierToolStripMenuItem_Click(object sender, EventArgs e)
@@ -139,6 +160,7 @@ namespace WindowsFormMotorCenter2
         private void ajouterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AjoutVoiture();
+           
 
         }
 
@@ -179,11 +201,11 @@ namespace WindowsFormMotorCenter2
 
         private void AjoutVoiture()
         {
-            FormAddVoiture form = new FormAddVoiture(null, FormAddVoiture.FormVoitureMode.Ajout);
+            FormAddVoiture form = new FormAddVoiture(null, FormAddVoiture.FormVoitureMode.Ajout, gestionVoiture);
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                if (lvNbVoiture.AddVoiture(form.VoitureModifie) == null)
+                if (lvVoitures.AddVoiture(form.VoitureModifie) == null)
                 {
                     MessageBox.Show("La voiture n'a pas pu être modifiée", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -191,9 +213,14 @@ namespace WindowsFormMotorCenter2
 
         }
 
-      
+        private void test_Click(object sender, EventArgs e)
+        {
+            FormConnexion form = new FormConnexion();
 
-        
+
+
+
+        }
     }
 }
 

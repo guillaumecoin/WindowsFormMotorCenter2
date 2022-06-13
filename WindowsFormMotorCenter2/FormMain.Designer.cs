@@ -31,11 +31,12 @@ namespace WindowsFormMotorCenter2
         {
             this.components = new System.ComponentModel.Container();
             this.lvVoitures = new System.Windows.Forms.ListView();
-            this.lvNbVoiture = new System.Windows.Forms.ListView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.modifierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajouterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.supprimerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtNbVoiture = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,24 +46,13 @@ namespace WindowsFormMotorCenter2
             this.lvVoitures.GridLines = true;
             this.lvVoitures.HideSelection = false;
             this.lvVoitures.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.lvVoitures.Location = new System.Drawing.Point(158, 34);
+            this.lvVoitures.Location = new System.Drawing.Point(176, 29);
             this.lvVoitures.Name = "lvVoitures";
-            this.lvVoitures.Size = new System.Drawing.Size(573, 361);
+            this.lvVoitures.Size = new System.Drawing.Size(1183, 572);
             this.lvVoitures.TabIndex = 0;
             this.lvVoitures.UseCompatibleStateImageBehavior = false;
             this.lvVoitures.View = System.Windows.Forms.View.Details;
             this.lvVoitures.SelectedIndexChanged += new System.EventHandler(this.lvVoitures_SelectedIndexChanged);
-            // 
-            // lvNbVoiture
-            // 
-            this.lvNbVoiture.HideSelection = false;
-            this.lvNbVoiture.Location = new System.Drawing.Point(12, 43);
-            this.lvNbVoiture.Name = "lvNbVoiture";
-            this.lvNbVoiture.Size = new System.Drawing.Size(140, 76);
-            this.lvNbVoiture.TabIndex = 2;
-            this.lvNbVoiture.UseCompatibleStateImageBehavior = false;
-            this.lvNbVoiture.View = System.Windows.Forms.View.Details;
-            this.lvNbVoiture.SelectedIndexChanged += new System.EventHandler(this.lvNbVoiture_SelectedIndexChanged);
             // 
             // contextMenuStrip1
             // 
@@ -95,30 +85,50 @@ namespace WindowsFormMotorCenter2
             this.supprimerToolStripMenuItem.Text = "Supprimer";
             this.supprimerToolStripMenuItem.Click += new System.EventHandler(this.supprimerToolStripMenuItem_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 15);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Nombre de voitures";
+            // 
+            // txtNbVoiture
+            // 
+            this.txtNbVoiture.Location = new System.Drawing.Point(24, 106);
+            this.txtNbVoiture.Name = "txtNbVoiture";
+            this.txtNbVoiture.ReadOnly = true;
+            this.txtNbVoiture.Size = new System.Drawing.Size(100, 23);
+            this.txtNbVoiture.TabIndex = 2;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1428, 661);
             this.ContextMenuStrip = this.contextMenuStrip1;
-            this.Controls.Add(this.lvNbVoiture);
+            this.Controls.Add(this.txtNbVoiture);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lvVoitures);
             this.Name = "FormMain";
             this.Text = "Gestion des voitures";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.ListView lvVoitures;
-        private System.Windows.Forms.ListView lvNbVoiture;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem modifierToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ajouterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem supprimerToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtNbVoiture;
     }
 }
 

@@ -9,7 +9,6 @@ namespace WindowsFormMotorCenter2.Models
 {
     public class GestionVoiture
     {
-
         motorcenterContext model = new motorcenterContext();
 
         public List<Voiture> ChargerVoiture()
@@ -17,12 +16,17 @@ namespace WindowsFormMotorCenter2.Models
             return model.Voitures.ToList();
         }
 
-        public int CompterVoiture()
+        public int Identifiant()
         {
-            return model.Voitures.Count();
+            int ide = (from v in model.Voitures orderby v.IdVoiture descending select v.IdVoiture).FirstOrDefault();
+            ide = ide + 1;
+            return ide;
         }
 
-
+        public string CompterVoiture()
+        {
+            return model.Voitures.ToList().Count().ToString();
+        }
 
         public Voiture AjouterVoiture(Voiture voiture)
         {
@@ -52,8 +56,11 @@ namespace WindowsFormMotorCenter2.Models
 
 
 
-        public Voiture ModifierVoiture(Voiture voiture)
+        public Voiture ModifVoiture(Voiture voiture)
         {
+            
+            
+            
             Voiture voitureChanger = RechercherVoiture(voiture.IdVoiture);
             if (voitureChanger == null)
                 return null;
@@ -72,7 +79,10 @@ namespace WindowsFormMotorCenter2.Models
             model.Entry(voitureChanger).State = EntityState.Modified;
 
             if (model.SaveChanges() > 0)
+            {
+                model.Entry(voitureChanger).Reload();
                 return voitureChanger;
+            }
 
             return null;
         }

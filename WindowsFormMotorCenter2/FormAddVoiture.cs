@@ -16,30 +16,31 @@ namespace WindowsFormMotorCenter2
 
         public enum FormVoitureMode { Ajout, Modification };
         FormVoitureMode mode;
-        private GestionVoiture gestionVoiture = new GestionVoiture();
+        private GestionVoiture gestionVoiture;
 
-        public FormAddVoiture()
-
-        {
-            InitializeComponent();
-           
-        }
-
-        public FormAddVoiture(Voiture voiture, FormVoitureMode mode)
+        public FormAddVoiture(GestionVoiture context)
 
         {
             InitializeComponent();
-            UpdateMode(voiture, mode);
+            gestionVoiture = context;
         }
 
-        public FormAddVoiture(Voiture voiture)
-            : this(voiture, FormVoitureMode.Modification)
+        public FormAddVoiture(Voiture voiture, FormVoitureMode mode, GestionVoiture context)
+
+        {
+            InitializeComponent();
+            UpdateMode(voiture, mode,context);
+            gestionVoiture = context;
+        }
+
+        public FormAddVoiture(Voiture voiture, GestionVoiture context)
+            : this(voiture, FormVoitureMode.Modification, context)
 
         {
 
         }
 
-        private void UpdateMode(Voiture voiture, FormVoitureMode mode)
+        private void UpdateMode(Voiture voiture, FormVoitureMode mode, GestionVoiture context)
         {
             this.mode = mode;
 
@@ -47,8 +48,7 @@ namespace WindowsFormMotorCenter2
             {
                 case FormVoitureMode.Ajout:
                     this.Text = "Ajout d'une voiture";
-
-                    txtId.Text = "";
+                    txtId.Text = context.Identifiant().ToString();
                     txtPuissanceF.Text = "";
                     txtCriterePo.Text = "";
                     txtTransmission.Text = "";
@@ -95,7 +95,6 @@ namespace WindowsFormMotorCenter2
 
         private void ConfirmeBtm_Click(object sender, EventArgs e)
         {
-            
 
             Voiture voitureAModifier = new Voiture()
             {
@@ -110,8 +109,9 @@ namespace WindowsFormMotorCenter2
                 Marque = txtMarque.Text,
                 Modele = txtModele.Text,
                 PrixAchat = Convert.ToInt32(txtPrix.Text)
-
             };
+                
+              
 
             switch (mode)
             {
@@ -120,14 +120,11 @@ namespace WindowsFormMotorCenter2
                     break;
 
                 case FormVoitureMode.Modification:
-                    VoitureModifie = gestionVoiture.ModifierVoiture(voitureAModifier);
+                    VoitureModifie = gestionVoiture.ModifVoiture(voitureAModifier);
                     break;
 
             }
             this.DialogResult = DialogResult.OK;
-
-
-
         }
 
         private void FormAddVoiture_Load(object sender, EventArgs e)

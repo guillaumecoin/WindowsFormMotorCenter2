@@ -136,16 +136,10 @@ namespace WindowsFormMotorCenter2.Models
 
                 entity.ToTable("employe");
 
-                entity.HasIndex(e => e.IdAchat, "Employe_Achat_FK");
-
                 entity.Property(e => e.IdEmploye)
                     .HasColumnType("int(11)")
                     .ValueGeneratedNever()
                     .HasColumnName("id_Employe");
-
-                entity.Property(e => e.IdAchat)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("idAchat");
 
                 entity.Property(e => e.MotDePasse)
                     .IsRequired()
@@ -155,12 +149,6 @@ namespace WindowsFormMotorCenter2.Models
                     .IsRequired()
                     .HasMaxLength(50)
                     .HasColumnName("nom_Employe");
-
-                entity.HasOne(d => d.IdAchatNavigation)
-                    .WithMany(p => p.Employes)
-                    .HasForeignKey(d => d.IdAchat)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Employe_Achat_FK");
             });
 
             modelBuilder.Entity<Voiture>(entity =>
@@ -172,7 +160,6 @@ namespace WindowsFormMotorCenter2.Models
 
                 entity.Property(e => e.IdVoiture)
                     .HasColumnType("int(11)")
-                    .ValueGeneratedNever()
                     .HasColumnName("id_Voiture");
 
                 entity.Property(e => e.Carburant)
@@ -209,7 +196,7 @@ namespace WindowsFormMotorCenter2.Models
                     .HasColumnName("peinture");
 
                 entity.Property(e => e.PrixAchat)
-                    .HasPrecision(15, 3)
+                    .HasColumnType("int(11)")
                     .HasColumnName("prixAchat");
 
                 entity.Property(e => e.PuissanceFiscale)

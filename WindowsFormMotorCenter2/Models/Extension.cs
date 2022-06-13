@@ -37,7 +37,6 @@ namespace WindowsFormMotorCenter2.Models
         {
             if (voiture == null)
                 return null;
-
             ListViewItem lvi = new ListViewItem(new string[] { voiture.IdVoiture.ToString(), voiture.PuissanceFiscale.ToString(), voiture.CriterePolution.ToString(),
                 voiture.TypeTransmission,  voiture.Finition, voiture.Carburant, voiture.Peinture, voiture.NbPortes.ToString(), voiture.Marque, voiture.Modele, voiture.PrixAchat.ToString()
                 });

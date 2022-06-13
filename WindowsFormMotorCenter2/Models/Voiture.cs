@@ -22,7 +22,7 @@ namespace WindowsFormMotorCenter2.Models
         public int NbPortes { get; set; }
         public string Marque { get; set; }
         public string Modele { get; set; }
-        public decimal PrixAchat { get; set; }
+        public int PrixAchat { get; set; }
 
         public virtual ICollection<Achat> Achats { get; set; }
     }
