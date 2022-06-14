@@ -33,9 +33,9 @@ namespace WindowsFormMotorCenter2
             lvVoitures.Columns.Add(new ColumnHeader() { Name = "typeTransmission", Text = "Transmission", Width = 80 });
             lvVoitures.Columns.Add(new ColumnHeader() { Name = "finition", Text = "Finition", Width = 60 });
             lvVoitures.Columns.Add(new ColumnHeader() { Name = "carburant", Text = "Carburant", Width = 70 });
-            lvVoitures.Columns.Add(new ColumnHeader() { Name = "peinture", Text = "Peinture", Width = 60 });
+            lvVoitures.Columns.Add(new ColumnHeader() { Name = "peinture", Text = "Peinture", Width = 70 });
             lvVoitures.Columns.Add(new ColumnHeader() { Name = "nbPortes", Text = "Nombres de portes", Width = 130 });
-            lvVoitures.Columns.Add(new ColumnHeader() { Name = "marque", Text = "Marque", Width = 60 });
+            lvVoitures.Columns.Add(new ColumnHeader() { Name = "marque", Text = "Marque", Width = 70 });
             lvVoitures.Columns.Add(new ColumnHeader() { Name = "modele", Text = "Modèle", Width = 60 });
             lvVoitures.Columns.Add(new ColumnHeader() { Name = "prixAchat", Text = "Prix", Width = 50 });
             
@@ -160,7 +160,11 @@ namespace WindowsFormMotorCenter2
         private void ajouterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AjoutVoiture();
-           
+
+            txtNbVoiture.Clear();
+            string nbVoiture = gestionVoiture.CompterVoiture();
+            txtNbVoiture.Text = nbVoiture;
+
 
         }
 
